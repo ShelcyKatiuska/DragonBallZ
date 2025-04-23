@@ -16,7 +16,7 @@ const CharacterCard = ({ character }) => {
   return (
     <Card
       sx={{
-        width: 320, // Tamaño fijo para igualar todas las tarjetas
+        width: 300, // Tamaño fijo para igualar todas las tarjetas
         height: 500, // Altura fija
         bgcolor: "#2c2c2c",
         color: "white",
@@ -93,4 +93,4 @@ const CharacterGrid = ({ characters }) => {
   );
 };
 
-export default CharacterGrid;
+export default CharacterCard;
