@@ -6,6 +6,7 @@ import {
   Typography,
   CardActionArea,
   Box,
+  Grid,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -15,31 +16,32 @@ const CharacterCard = ({ character }) => {
   return (
     <Card
       sx={{
-        maxWidth: 300,
+        width: 320, // Tamaño fijo para igualar todas las tarjetas
+        height: 500, // Altura fija
         bgcolor: "#2c2c2c",
         color: "white",
         borderRadius: 2,
         m: 2,
-        overflow: "visible", // <-- permite que la imagen se salga de la tarjeta
+        overflow: "visible", // Permite que la imagen se salga de la tarjeta
       }}
     >
       <CardActionArea onClick={() => navigate(`/character/${character.id}`)}>
         <Box
           sx={{
-            height: 420,
+            height: 300, // Ajustar la altura de la imagen
             bgcolor: "#1e1e1e",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             p: 2,
-            position: "relative", // <-- necesario para el z-index de la imagen
+            position: "relative",
             "& img": {
               transition: "transform 0.3s ease-in-out",
               zIndex: 1,
               position: "relative",
             },
             "&:hover img": {
-              transform: "scale(1.3)", // puedes ajustar la escala
+              transform: "scale(1.3)", // Ajusta la escala en hover
               zIndex: 10,
             },
           }}
@@ -79,4 +81,16 @@ const CharacterCard = ({ character }) => {
   );
 };
 
-export default CharacterCard;
+const CharacterGrid = ({ characters }) => {
+  return (
+    <Grid container spacing={2} justifyContent="flex-start" ml={2}>
+      {characters.map((character) => (
+        <Grid item key={character.id}>
+          <CharacterCard character={character} />
+        </Grid>
+      ))}
+    </Grid>
+  );
+};
+
+export default CharacterGrid;
