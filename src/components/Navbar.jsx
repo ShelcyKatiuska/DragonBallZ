@@ -1,9 +1,10 @@
 import React from 'react';
-import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Typography, useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm')); // Detecta pantallas pequeñas
 
   return (
     <AppBar
@@ -46,28 +47,50 @@ const Navbar = () => {
         </Box>
 
         {/* Menú de navegación */}
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          {[{ label: 'Inicio', path: '/' }, { label: 'Femenino', path: '/femenino' }, { label: 'Masculino', path: '/masculino' }, { label: 'Acerca de', path: '/about' }]
-            .map(({ label, path }) => (
-              <Button
-                key={label}
-                onClick={() => navigate(path)}
-                sx={{
-                  color: '#ffffff',
-                  border: '1px solid #ff9800',
-                  fontWeight: 'bold',
-                  textTransform: 'none',
-                  '&:hover': {
-                    backgroundColor: '#ff9800',
-                    color: '#000000',
-                  },
-                }}
-                variant="outlined"
-              >
-                {label}
-              </Button>
-            ))}
-        </Box>
+        {!isMobile ? (
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            {[{ label: 'Inicio', path: '/' }, { label: 'Femenino', path: '/femenino' }, { label: 'Masculino', path: '/masculino' }, { label: 'Acerca de', path: '/about' }]
+              .map(({ label, path }) => (
+                <Button
+                  key={label}
+                  onClick={() => navigate(path)}
+                  sx={{
+                    color: '#ffffff',
+                    border: '1px solid #ff9800',
+                    fontWeight: 'bold',
+                    textTransform: 'none',
+                    '&:hover': {
+                      backgroundColor: '#ff9800',
+                      color: '#000000',
+                    },
+                  }}
+                  variant="outlined"
+                >
+                  {label}
+                </Button>
+              ))}
+          </Box>
+        ) : (
+          // En pantallas pequeñas, los botones se ocultan, puedes incluir un menú hamburguesa o algo similar
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Button
+              onClick={() => navigate('/')}
+              sx={{
+                color: '#ffffff',
+                border: '1px solid #ff9800',
+                fontWeight: 'bold',
+                textTransform: 'none',
+                '&:hover': {
+                  backgroundColor: '#ff9800',
+                  color: '#000000',
+                },
+              }}
+              variant="outlined"
+            >
+              Menú
+            </Button>
+          </Box>
+        )}
       </Toolbar>
     </AppBar>
   );
