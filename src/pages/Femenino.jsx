@@ -1,18 +1,18 @@
-// src/pages/NonHumansPage.jsx
+
 import React, { useEffect, useState } from 'react';
 import { Grid, Container, CircularProgress } from '@mui/material';
 import CharacterCard from '../components/CharacterCard';
 import { getCharacters } from '../api';
 
-const NonHumansPage = () => {
+const Femenino = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCharacters = async () => {
       const data = await getCharacters();
-      const nonHumanCharacters = data.filter(char => char.race !== 'Human');
-      setCharacters(nonHumanCharacters);
+      const femaleCharacters = data.filter(char => char.gender === 'Female');
+      setCharacters(femaleCharacters);
       setLoading(false);
     };
     fetchCharacters();
@@ -33,4 +33,4 @@ const NonHumansPage = () => {
   );
 };
 
-export default NonHumansPage;
+export default Femenino;

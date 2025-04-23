@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
-import HumansPage from './pages/HumansPage';
-import NonHumansPage from './pages/NonHumansPage';
 import AboutPage from './pages/AboutPage';
 import CharacterDetail from './components/CharacterDetail';
+import Masculino from './pages/Masculino';
+import Femenino from './pages/Femenino';
 
 
 
@@ -32,8 +32,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/character/:id" element={<CharacterDetail />} />
-          <Route path="/humans" element={<HumansPage />} />
-          <Route path="/non-humans" element={<NonHumansPage />} />
+          <Route path="/femenino" element={<Femenino />} />
+          <Route path="/masculino" element={<Masculino />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </Router>

@@ -18,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -29,10 +30,14 @@ body {
   align-items: center; /* Centrado vertical */
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); /* Gradiente suave */
+  background-image: url('https://i.pinimg.com/736x/e8/41/78/e841789d4f1cfe34969ab6d7b8a6374c.jpg'); /* Ruta de la imagen de fondo */
+  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+  background-position: center center; /* Centra la imagen */
+  background-attachment: fixed; /* Fija la imagen al fondo para que no se mueva al hacer scroll */
   font-family: 'Inter', sans-serif;
   color: rgba(255, 255, 255, 0.87);
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -118,22 +123,3 @@ button:focus-visible {
 .read-the-docs {
   color: #888;
 }
-
-/* Estilos para el fondo bonito de la pantalla principal */
-body {
-  background: linear-gradient(135deg, #6e7e85, #4c5c67); /* Gradiente suave que se adapta */
-  animation: gradientShift 15s ease infinite; /* Animación de gradiente suave */
-}
-
-@keyframes gradientShift {
-  0% {
-    background: linear-gradient(135deg, #6e7e85, #4c5c67);
-  }
-  50% {
-    background: linear-gradient(135deg, #4c5c67, #6e7e85);
-  }
-  100% {
-    background: linear-gradient(135deg, #6e7e85, #4c5c67);
-  }
-}
-

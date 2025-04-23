@@ -1,19 +1,18 @@
-// src/pages/HumansPage.jsx
-// src/pages/HumansPage.jsx
+// src/pages/NonHumansPage.jsx
 import React, { useEffect, useState } from 'react';
 import { Grid, Container, CircularProgress } from '@mui/material';
 import CharacterCard from '../components/CharacterCard';
 import { getCharacters } from '../api';
 
-const HumansPage = () => {
+const Masculino = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCharacters = async () => {
       const data = await getCharacters();
-      const humanCharacters = data.filter(char => char.race === 'Human');
-      setCharacters(humanCharacters);
+      const maleCharacters = data.filter(char => char.gender === 'Male');
+      setCharacters(maleCharacters);
       setLoading(false);
     };
     fetchCharacters();
@@ -34,4 +33,4 @@ const HumansPage = () => {
   );
 };
 
-export default HumansPage;
+export default Masculino;
