@@ -6,7 +6,6 @@ import {
   Typography,
   CardActionArea,
   Box,
-  Grid,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -16,19 +15,19 @@ const CharacterCard = ({ character }) => {
   return (
     <Card
       sx={{
-        width: 300, // Tamaño fijo para igualar todas las tarjetas
-        height: 500, // Altura fija
+        width: 325,
+        height: 500,
         bgcolor: "#2c2c2c",
         color: "white",
         borderRadius: 2,
         m: 2,
-        overflow: "visible", // Permite que la imagen se salga de la tarjeta
+        overflow: "visible",
       }}
     >
       <CardActionArea onClick={() => navigate(`/character/${character.id}`)}>
         <Box
           sx={{
-            height: 300, // Ajustar la altura de la imagen
+            height: 300,
             bgcolor: "#1e1e1e",
             display: "flex",
             justifyContent: "center",
@@ -41,7 +40,7 @@ const CharacterCard = ({ character }) => {
               position: "relative",
             },
             "&:hover img": {
-              transform: "scale(1.3)", // Ajusta la escala en hover
+              transform: "scale(1.3)",
               zIndex: 10,
             },
           }}
@@ -78,18 +77,6 @@ const CharacterCard = ({ character }) => {
         </CardContent>
       </CardActionArea>
     </Card>
-  );
-};
-
-const CharacterGrid = ({ characters }) => {
-  return (
-    <Grid container spacing={2} justifyContent="flex-start" ml={2}>
-      {characters.map((character) => (
-        <Grid item key={character.id}>
-          <CharacterCard character={character} />
-        </Grid>
-      ))}
-    </Grid>
   );
 };
 
